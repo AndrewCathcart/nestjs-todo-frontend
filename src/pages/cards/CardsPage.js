@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { inject, observer } from "mobx-react";
-import { Fab, IconButton } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
-import SignOutIcon from "@material-ui/icons/ExitToApp";
-import styled from "styled-components";
-import Card from "../../components/Card";
-import CardsFilters from "../../components/CardsFilters";
+import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
+import { Fab, IconButton } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import SignOutIcon from '@material-ui/icons/ExitToApp';
+import styled from 'styled-components';
+import Card from '../../components/Card';
+import CardsFilters from '../../components/CardsFilters';
 
 const CardsWrapper = styled.div`
   width: 100%;
@@ -51,7 +51,7 @@ const SignOutIconContainer = styled.div`
   }
 `;
 
-@inject("cardsStore", "routerStore", "userStore")
+@inject('cardsStore', 'routerStore', 'userStore')
 @observer
 class CardsPage extends Component {
   componentDidMount() {
@@ -62,18 +62,28 @@ class CardsPage extends Component {
     const { userStore, cardsStore, routerStore } = this.props;
     userStore.signout();
     cardsStore.resetCards();
-    routerStore.push("/signin");
+    routerStore.push('/signin');
   };
 
   renderCards = () => {
     const { cardsStore } = this.props;
 
     if (!cardsStore.cards.length) {
-      return <EmptyCardsPlaceholder>No cards available. Create one?</EmptyCardsPlaceholder>;
+      return (
+        <EmptyCardsPlaceholder>
+          No cards available. Create one?
+        </EmptyCardsPlaceholder>
+      );
     }
 
     return cardsStore.cards.map((card) => (
-      <Card key={card.id} id={card.id} title={card.title} description={card.description} status={card.status} />
+      <Card
+        key={card.id}
+        id={card.id}
+        title={card.title}
+        description={card.description}
+        status={card.status}
+      />
     ));
   };
 
@@ -84,7 +94,10 @@ class CardsPage extends Component {
           <Title>Get things done.</Title>
 
           <CreateButtonContainer>
-            <Fab variant="extended" onClick={() => this.props.routerStore.push("/cards/create")}>
+            <Fab
+              variant="extended"
+              onClick={() => this.props.routerStore.push('/cards/create')}
+            >
               <AddIcon />
               Create Card
             </Fab>

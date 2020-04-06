@@ -1,5 +1,5 @@
-import BaseHttpService from "./base-http.service";
-import queryString from "query-string";
+import BaseHttpService from './base-http.service';
+import queryString from 'query-string';
 
 export default class CardsService extends BaseHttpService {
   fetchCards({ status, search }) {
@@ -14,7 +14,7 @@ export default class CardsService extends BaseHttpService {
     }
 
     const queryStr = queryString.stringify(queryObj);
-    return this.get("cards" + (queryStr ? `?${queryStr}` : ""));
+    return this.get('cards' + (queryStr ? `?${queryStr}` : ''));
   }
 
   async deleteCard(id) {

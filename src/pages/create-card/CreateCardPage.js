@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { TextField, FormControl, Button } from "@material-ui/core";
-import styled from "styled-components";
-import { inject } from "mobx-react";
-import ErrorMessage from "../../components/ErrorMessage";
+import React, { Component } from 'react';
+import { TextField, FormControl, Button } from '@material-ui/core';
+import styled from 'styled-components';
+import { inject } from 'mobx-react';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const FormWrapper = styled.div`
   width: 100vw;
@@ -20,14 +20,14 @@ const FormContainer = styled.div`
   border-radius: 5px;
 `;
 
-@inject("cardsStore", "routerStore")
+@inject('cardsStore', 'routerStore')
 class CreateCardPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      title: "",
-      description: "",
+      title: '',
+      description: '',
       errorMessage: null,
     };
   }
@@ -38,7 +38,7 @@ class CreateCardPage extends Component {
 
     try {
       await cardsStore.createCard(title, description);
-      routerStore.push("/cards");
+      routerStore.push('/cards');
     } catch (error) {
       const errorMessage = error.response.data.message;
       this.setState({ errorMessage });
@@ -52,7 +52,9 @@ class CreateCardPage extends Component {
           <h1>Create a new card</h1>
           <p>Provide information about the card you wish to complete.</p>
 
-          {this.state.errorMessage && <ErrorMessage message={this.state.errorMessage} />}
+          {this.state.errorMessage && (
+            <ErrorMessage message={this.state.errorMessage} />
+          )}
 
           <FormControl fullWidth>
             <TextField
@@ -76,7 +78,7 @@ class CreateCardPage extends Component {
           </FormControl>
 
           <Button
-            style={{ marginTop: "10px" }}
+            style={{ marginTop: '10px' }}
             fullWidth
             variant="contained"
             color="primary"

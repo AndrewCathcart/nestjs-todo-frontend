@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 const ErrorContainer = styled.div`
   width: 100%;
@@ -21,7 +21,9 @@ const ErrorList = styled.ul`
 
 export default class ErrorMessage extends Component {
   renderMessageArray = (errors) => {
-    const constraints = errors.map((constraint, idx) => <li key={idx}>{constraint}</li>);
+    const constraints = errors.map((constraint, idx) => (
+      <li key={idx}>{constraint}</li>
+    ));
 
     return <ErrorList>{constraints}</ErrorList>;
   };
@@ -32,7 +34,11 @@ export default class ErrorMessage extends Component {
     return (
       <ErrorContainer>
         <ErrorHeading>Oops!</ErrorHeading>
-        {Array.isArray(message) ? this.renderMessageArray(message) : <p>{message}</p>}
+        {Array.isArray(message) ? (
+          this.renderMessageArray(message)
+        ) : (
+          <p>{message}</p>
+        )}
       </ErrorContainer>
     );
   }

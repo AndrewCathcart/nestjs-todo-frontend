@@ -1,8 +1,8 @@
-import { observable, action } from "mobx";
+import { observable, action } from 'mobx';
 
 export default class CardsStore {
   @observable cards = [];
-  @observable filters = { status: "", search: "" };
+  @observable filters = { status: '', search: '' };
 
   constructor(cardsService) {
     this.cardsService = cardsService;

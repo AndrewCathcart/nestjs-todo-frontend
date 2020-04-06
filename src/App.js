@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from "react";
-import { Route } from "react-router";
-import { inject, observer } from "mobx-react";
+import React, { Component, Fragment } from 'react';
+import { Route } from 'react-router';
+import { inject, observer } from 'mobx-react';
 
-import SignInPage from "./pages/signin/SignInPage";
-import SignUpPage from "./pages/signup/SignUpPage";
-import TasksPage from "./pages/cards/CardsPage";
-import CreateTaskPage from "./pages/create-card/CreateCardPage";
+import SignInPage from './pages/signin/SignInPage';
+import SignUpPage from './pages/signup/SignUpPage';
+import TasksPage from './pages/cards/CardsPage';
+import CreateTaskPage from './pages/create-card/CreateCardPage';
 
-@inject("routerStore")
+@inject('routerStore')
 @observer
 class App extends Component {
   render() {

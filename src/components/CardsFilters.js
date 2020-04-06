@@ -1,10 +1,17 @@
-import React, { Component } from "react";
-import { Grid, FormControl, Select, MenuItem, TextField, InputAdornment } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
-import styled from "styled-components";
-import { inject } from "mobx-react";
-import { Subject } from "rxjs";
-import { debounceTime } from "rxjs/operators";
+import React, { Component } from 'react';
+import {
+  Grid,
+  FormControl,
+  Select,
+  MenuItem,
+  TextField,
+  InputAdornment,
+} from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
+import styled from 'styled-components';
+import { inject } from 'mobx-react';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 const FiltersContainer = styled.div`
   margin-top: 20px;
@@ -16,7 +23,7 @@ const ControlContainer = styled.div`
   padding: 10px;
 `;
 
-@inject("cardsStore")
+@inject('cardsStore')
 class CardsFilters extends Component {
   filters$ = new Subject();
 
@@ -57,7 +64,7 @@ class CardsFilters extends Component {
         >
           <Grid item>
             <ControlContainer>
-              <FormControl style={{ width: "220px" }}>
+              <FormControl style={{ width: '220px' }}>
                 <TextField
                   placeholder="Search..."
                   value={this.state.search}
@@ -76,12 +83,16 @@ class CardsFilters extends Component {
 
           <Grid item>
             <ControlContainer>
-              <FormControl style={{ width: "220px" }}>
-                <Select value={this.state.status} onChange={this.handleStatusFilterChange} displayEmpty>
+              <FormControl style={{ width: '220px' }}>
+                <Select
+                  value={this.state.status}
+                  onChange={this.handleStatusFilterChange}
+                  displayEmpty
+                >
                   <MenuItem value="">No status filter</MenuItem>
-                  <MenuItem value={"TO_DO"}>To Do</MenuItem>
-                  <MenuItem value={"IN_PROGRESS"}>In Progress</MenuItem>
-                  <MenuItem value={"DONE"}>Done</MenuItem>
+                  <MenuItem value={'TO_DO'}>To Do</MenuItem>
+                  <MenuItem value={'IN_PROGRESS'}>In Progress</MenuItem>
+                  <MenuItem value={'DONE'}>Done</MenuItem>
                 </Select>
               </FormControl>
             </ControlContainer>

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Button, TextField } from "@material-ui/core";
-import styled from "styled-components";
+import React, { Component } from 'react';
+import { Button, TextField } from '@material-ui/core';
+import styled from 'styled-components';
 
-import "./SignInPage.scss";
-import { inject } from "mobx-react";
-import ErrorMessage from "../../components/ErrorMessage";
+import './SignInPage.scss';
+import { inject } from 'mobx-react';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const Heading = styled.h1`
   margin-top: 0;
@@ -22,13 +22,13 @@ const FormField = styled(TextField)`
   width: 100%;
 `;
 
-@inject("userStore", "routerStore")
+@inject('userStore', 'routerStore')
 class SignInPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
       errorMesssage: null,
     };
   }
@@ -39,7 +39,7 @@ class SignInPage extends Component {
 
     try {
       await this.props.userStore.signin(username, password);
-      this.props.routerStore.push("/cards");
+      this.props.routerStore.push('/cards');
     } catch (error) {
       const errorMessage = error.response.data.message;
       this.setState({ errorMessage });
@@ -47,7 +47,7 @@ class SignInPage extends Component {
   };
 
   goToSignUp = () => {
-    this.props.routerStore.push("/signup");
+    this.props.routerStore.push('/signup');
   };
 
   render() {
@@ -83,7 +83,7 @@ class SignInPage extends Component {
           <hr />
           <div>
             <Button
-              style={{ marginBottom: "10px" }}
+              style={{ marginBottom: '10px' }}
               fullWidth
               variant="contained"
               color="primary"
